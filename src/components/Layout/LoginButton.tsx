@@ -1,10 +1,10 @@
-import classes from './HeaderButton.module.css';
+import classes from "./HeaderButton.module.css";
 
-function LoginButton() {
-    return (
-        <button className={classes.button}>
-            <span>Login</span>
-        </button>
-    );
+const LoginButton: React.FC<{ onShowHandler: () => void }> = (props) => {
+  return (
+    <button onClick={props.onShowHandler} className={classes.button}>
+      <span>Login</span>
+    </button>
+  );
 };
 export default LoginButton;
