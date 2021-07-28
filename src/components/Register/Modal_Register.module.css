@@ -1,0 +1,93 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  
+  .modal_register {
+    position: fixed;
+    top: 20vh;
+    left: 5%;
+    width: 90%;
+    background-color: #3a47ff;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 30;
+    animation: slide-down 300ms ease-out forwards;
+  }
+  
+  @media (min-width: 768px) {
+    .modal_register {
+      width: 40rem;
+      left: calc(50% - 20rem);
+    }
+  }
+  
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-3rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .buttons_right {
+    align-items: flex-end;
+  }
+  
+  .input {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+  }
+  
+  .input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.15rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input input:focus {
+    outline: none;
+    border-color: #220090;
+  }
+.buttons_input {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #01064d;
+    color: white;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .button:hover,
+  .button:active {
+    background-color: #000a8f;
+  }
