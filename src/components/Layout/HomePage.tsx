@@ -8,7 +8,7 @@ const HomePage: React.FC<{
 }> = (props) => {
   return (
     <header className={classes.header}>
-      <h1>Home Page</h1>
+      <h1>Wish List Splitter</h1>
       <div className={classes.buttons}>
         <LoginButton onShowHandler={props.onShowHandler} />
         <RegisterButton onShowRegister={props.onShowRegister} />

@@ -13,25 +13,36 @@ const App: React.FC = () => {
   };
   const hideModalHandler = () => {
     setLogInIsShown(false);
-  }
+  };
 
   const showRegisterHandler = () => {
     setRegisterIsShown(true);
-  }
+  };
   const hideRegisterHandler = () => {
     setRegisterIsShown(false);
-  }
-
-
+  };
 
   return (
     <div>
-      { LogInIsShown && <ModalLogIn onHideModal={hideModalHandler} onShowModal={showLogInHandler} />}
-      { RegisterIsShown && <ModalRegister onHideModal={hideRegisterHandler} onShowModal={showRegisterHandler} />}
+      {LogInIsShown && (
+        <ModalLogIn
+          onHideModal={hideModalHandler}
+          onShowModal={showLogInHandler}
+        />
+      )}
+      {RegisterIsShown && (
+        <ModalRegister
+          onHideModal={hideRegisterHandler}
+          onShowModal={showRegisterHandler}
+        />
+      )}
 
-      <HomePage onShowHandler={showLogInHandler} onShowRegister={showRegisterHandler}/>
+      <HomePage
+        onShowHandler={showLogInHandler}
+        onShowRegister={showRegisterHandler}
+      />
     </div>
   );
-}
+};
 
 export default App;
