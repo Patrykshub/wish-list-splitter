@@ -9,10 +9,7 @@ const ModalLogIn: React.FC<{
 }> = (props) => {
   const Backdrop: React.FC<{ onHideModal: () => void }> = (props) => {
     return (
-      <div>
-        {" "}
-        className={classes.backdrop} onClick={props.onHideModal}{" "}
-      </div>
+      <div className={classes.backdrop_login} onClick={props.onHideModal} />
     );
   };
 

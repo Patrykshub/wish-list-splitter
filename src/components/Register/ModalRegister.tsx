@@ -5,7 +5,7 @@ import classes from './Modal_Register.module.css'
 const ModalRegister: React.FC <{onHideModal: () => void; onShowModal: () => void}> = (props) => {
 
   const Backdrop: React.FC <{onHideModal: () => void}> = (props) => {
-    return <div className={classes.backdrop} onClick={props.onHideModal} />;
+    return <div className={classes.backdrop_register} onClick={props.onHideModal} />;
   };
 
   const Modal: React.FC <{onShowModal: () => void}> = (props) => {
