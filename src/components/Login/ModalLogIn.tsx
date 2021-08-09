@@ -22,8 +22,8 @@ const ModalLogIn: React.FC<{
       </div>
     );
   };
-
-   const [formIsValid, setFormIsValid] = useState(false);
+   const [emailIsValid, setEmailIsValid] = useState("")
+   const [formIsValid, setFormIsValid] = useState(true);
 
   const enteredEmailRef = useRef<HTMLInputElement>(null);
   const enteredPasswordRef = useRef<HTMLInputElement>(null);
@@ -36,6 +36,8 @@ const ModalLogIn: React.FC<{
     if (enteredEmail.trim().length === 0) {
       setFormIsValid(false);
     }
+
+
     const enteredPassword = enteredPasswordRef.current!.value;
     console.log(enteredPassword);
     if (enteredPassword.trim().length === 0) {
@@ -43,18 +45,18 @@ const ModalLogIn: React.FC<{
     }
   };
 
-   // const nameInputClasses = formIsValid ?  'classes.input' : 'input invalid'
   return (
     <Fragment>
       {<Backdrop onHideModal={props.onHideModal} />}
       <Modal onShowModal={props.onShowModal}>
-        <form className={classes.input} onSubmit={submitHandler}>
+        <form className={`${classes['input']} ${!formIsValid && classes.invalid}`} onSubmit={submitHandler}>
           <label htmlFor="email">E-Mail</label>
           <input
             id="email"
             type="text"
             // value=
             ref={enteredEmailRef}
+            placeholder="Enter your E-mail-Adress"
           ></input>
 
           <label htmlFor="password">Password</label>
@@ -62,6 +64,7 @@ const ModalLogIn: React.FC<{
             id="password"
             type="password"
             ref={enteredPasswordRef}
+            placeholder="Enter your password"
           ></input>
 
           <div className={classes.buttons_input}>

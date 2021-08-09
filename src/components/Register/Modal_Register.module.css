@@ -63,7 +63,9 @@
     margin-bottom: 0.5rem;
   }
   
-  .input input:focus {
+  .input input:focus,
+  .input select {
+    background-color: #b4b9ff;
     outline: none;
     border-color: #220090;
   }
