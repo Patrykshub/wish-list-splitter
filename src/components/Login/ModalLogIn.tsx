@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Modal from './Modal';
 import useInput from "../hooks/use-input";
 
 import classes from "./Modal.module.css";
@@ -10,6 +11,7 @@ import classes from "./Modal.module.css";
 //   password = "password",
 // }
 
+
 const ModalLogIn: React.FC<{
   onHideModal: () => void;
   onShowModal: () => void;
@@ -19,15 +21,20 @@ const ModalLogIn: React.FC<{
       <div className={classes.backdrop_login} onClick={props.onHideModal} />
     );
   };
-  const Modal: React.FC<{
-    onShowModal: () => void;
-  }> = (props) => {
-    return (
-      <div>
-        <div className={classes.modal}>{props.children}</div>
-      </div>
-    );
-  };
+
+  // kod Jakuba
+
+  // const validate = (value: string, inputType: InputType) => {
+  //   const isInvalid = value.trim().length === 0;
+  //   switch (inputType) {
+  //     case InputType.email:
+  //       setEmailIsValid(!isInvalid);
+  //       break;
+  //     case InputType.password:
+  //       setPasswordIsValid(!isInvalid);
+  //       break;
+  //   }
+  // };
 
   const {
     isValid: enteredPasswordIsValid,
@@ -70,25 +77,14 @@ const ModalLogIn: React.FC<{
     emailReset();
   };
 
-  // kod Jakuba
-
-  // const validate = (value: string, inputType: InputType) => {
-  //   const isInvalid = value.trim().length === 0;
-  //   switch (inputType) {
-  //     case InputType.email:
-  //       setEmailIsValid(!isInvalid);
-  //       break;
-  //     case InputType.password:
-  //       setPasswordIsValid(!isInvalid);
-  //       break;
-  //   }
-  // };
-
   return (
     <Fragment>
       {<Backdrop onHideModal={props.onHideModal} />}
       <Modal onShowModal={props.onShowModal}>
-        <form className={classes.control_group} onSubmit={formSubmissionHandler}>
+        <form
+          className={classes.control_group}
+          onSubmit={formSubmissionHandler}
+        >
           <div className={classes.input}>
             <label htmlFor="email">E-Mail</label>
             <input
@@ -115,13 +111,12 @@ const ModalLogIn: React.FC<{
               placeholder="Enter your password"
             ></input>
             {enteredPasswordError && (
-              <p className={classes.error_text}>
-                Check your password.
-              </p>
+              <p className={classes.error_text}>Check your password.</p>
             )}
-
             <div className={classes.buttons_input}>
-              <button disabled={!formIsValid} className={classes.button}>Log in</button>
+              <button disabled={!formIsValid} className={classes.button}>
+                Log in
+              </button>
               <button className={classes.button} onClick={props.onHideModal}>
                 Close
               </button>

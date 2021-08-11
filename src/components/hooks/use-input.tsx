@@ -7,10 +7,10 @@ const useInput = (validateValue: any) => {
   const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
 
-  const valueChangeHandler = (FormEvent:any) => {
-    setEnteredValue(FormEvent.target.value);
+  const valueChangeHandler = (event:any) => {
+    setEnteredValue(event.target.value);
   };
-  const inputBlurHandler = (FormEvent:any) => {
+  const inputBlurHandler = (event:any) => {
     setIsTouched(true);
   };
 
