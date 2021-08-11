@@ -21,6 +21,7 @@ const App: React.FC = () => {
   const hideRegisterHandler = () => {
     setRegisterIsShown(false);
   };
+  
 
   return (
     <div>

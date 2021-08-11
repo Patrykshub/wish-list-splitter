@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Modal from './Modal';
+import Modal from "./Modal";
 import useInput from "../hooks/use-input";
 
 import classes from "./Modal.module.css";
@@ -10,7 +10,6 @@ import classes from "./Modal.module.css";
 //   email = "email",
 //   password = "password",
 // }
-
 
 const ModalLogIn: React.FC<{
   onHideModal: () => void;
@@ -64,6 +63,15 @@ const ModalLogIn: React.FC<{
   }
   const formSubmissionHandler = (FormEvent: any) => {
     FormEvent.preventDefault();
+    const logInHandler = (userData: string | number) => {
+      fetch("https://react-my-burger360-default-rtdb.firebaseio.com/users.json", {
+        method: "POST",
+        body: JSON.stringify({
+          login: {enteredEmail},
+          password: {enteredPassword}
+        }),
+      });
+    };
 
     if (!enteredPassword) {
       return;
@@ -75,7 +83,10 @@ const ModalLogIn: React.FC<{
 
     lastNameReset();
     emailReset();
+    logInHandler(enteredPassword && enteredEmail);
+
   };
+
 
   return (
     <Fragment>
@@ -114,7 +125,10 @@ const ModalLogIn: React.FC<{
               <p className={classes.error_text}>Check your password.</p>
             )}
             <div className={classes.buttons_input}>
-              <button disabled={!formIsValid} className={classes.button}>
+              <button
+                disabled={!formIsValid}
+                className={classes.button}
+              >
                 Log in
               </button>
               <button className={classes.button} onClick={props.onHideModal}>
