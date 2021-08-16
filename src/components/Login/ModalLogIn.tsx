@@ -60,7 +60,9 @@ const ModalLogIn: React.FC<{
   let formIsValid = false;
   if (enteredPasswordIsValid && enteredEmailIsValid) {
     formIsValid = true;
+    console.log(formIsValid);
   }
+
   const formSubmissionHandler = (FormEvent: any) => {
     FormEvent.preventDefault();
     const logInHandler = (userData: string | number) => {
@@ -84,24 +86,24 @@ const ModalLogIn: React.FC<{
     lastNameReset();
     emailReset();
     logInHandler(enteredPassword && enteredEmail);
-
+    props.onHideModal();
+    
   };
 
+  
 
   return (
     <Fragment>
       {<Backdrop onHideModal={props.onHideModal} />}
       <Modal onShowModal={props.onShowModal}>
-        <form
-          className={classes.control_group}
+        <form className={classes.form_control}
           onSubmit={formSubmissionHandler}
         >
-          <div className={classes.input}>
+          <div >
             <label htmlFor="email">E-Mail</label>
+            <div className={`${classes['form_input']} ${!enteredEmailIsValid && enteredEmailError && classes.invalid}`}>
             <input
-              className={`${classes["input"]} ${
-                enteredEmail && classes.invalid
-              }`}
+              
               id="email"
               type="text"
               value={enteredEmail}
@@ -109,10 +111,12 @@ const ModalLogIn: React.FC<{
               onBlur={emailInputBlur}
               placeholder="Enter your E-mail-Adress"
             ></input>
+            </div>
             {enteredEmailError && (
               <p className={classes.error_text}>Check your email.</p>
             )}
             <label htmlFor="password">Password</label>
+            <div className={`${classes['form_input']} ${!enteredPasswordIsValid && enteredPasswordError && classes.invalid}`}>
             <input
               id="password"
               type="password"
@@ -121,10 +125,11 @@ const ModalLogIn: React.FC<{
               onBlur={passwordInputBlur}
               placeholder="Enter your password"
             ></input>
+            </div>
             {enteredPasswordError && (
               <p className={classes.error_text}>Check your password.</p>
             )}
-            <div className={classes.buttons_input}>
+            <div className={classes.buttons_validInput}>
               <button
                 disabled={!formIsValid}
                 className={classes.button}

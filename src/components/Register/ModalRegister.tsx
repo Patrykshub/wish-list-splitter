@@ -31,8 +31,8 @@ const ModalRegister: React.FC <{onHideModal: () => void; onShowModal: () => void
           <input id="lastName" type="text" placeholder='Enter your last name.'></input>
           <label htmlFor="age">Birth Date</label>
           <input id="age" type="text" placeholder='Enter your birth date.'></input>
-          <label htmlFor="adress">Adress</label>
-          <input id="adress" type="text" placeholder='Enter your adress.'></input>
+          <label htmlFor="adress">E-mail</label>
+          <input id="email" type="email" placeholder='Enter your E-mail.'></input>
           <div className={classes.buttons_input}>
             <button className={classes.button} onSubmit={registerHandler}>Register</button>
             <button className={classes.button} onClick={props.onHideModal}>Close</button>
