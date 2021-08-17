@@ -1,39 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Modal from "./Modal";
 import useInput from "../hooks/use-input";
 
 import classes from "./Modal.module.css";
 
-// kod Jakuba
-
-// export enum InputType {
-//   email = "email",
-//   password = "password",
-// }
-
 const ModalLogIn: React.FC<{
   onHideModal: () => void;
   onShowModal: () => void;
 }> = (props) => {
+  
   const Backdrop: React.FC<{ onHideModal: () => void }> = (props) => {
     return (
       <div className={classes.backdrop_login} onClick={props.onHideModal} />
     );
   };
-
-  // kod Jakuba
-
-  // const validate = (value: string, inputType: InputType) => {
-  //   const isInvalid = value.trim().length === 0;
-  //   switch (inputType) {
-  //     case InputType.email:
-  //       setEmailIsValid(!isInvalid);
-  //       break;
-  //     case InputType.password:
-  //       setPasswordIsValid(!isInvalid);
-  //       break;
-  //   }
-  // };
 
   const {
     isValid: enteredPasswordIsValid,
@@ -66,7 +46,7 @@ const ModalLogIn: React.FC<{
   const formSubmissionHandler = (FormEvent: any) => {
     FormEvent.preventDefault();
     const logInHandler = (userData: string | number) => {
-      fetch("https://react-my-burger360-default-rtdb.firebaseio.com/users.json", {
+      fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=[API_KEY]", {
         method: "POST",
         body: JSON.stringify({
           login: {enteredEmail},
@@ -82,12 +62,10 @@ const ModalLogIn: React.FC<{
       return;
     }
     console.log(enteredPassword, enteredEmail);
-
     lastNameReset();
     emailReset();
     logInHandler(enteredPassword && enteredEmail);
     props.onHideModal();
-    
   };
 
   

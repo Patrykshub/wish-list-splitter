@@ -7,6 +7,7 @@ import ModalRegister from "./components/Register/ModalRegister";
 const App: React.FC = () => {
   const [LogInIsShown, setLogInIsShown] = useState(false);
   const [RegisterIsShown, setRegisterIsShown] = useState(false);
+  
 
   const showLogInHandler = () => {
     setLogInIsShown(true);
@@ -26,7 +27,7 @@ const App: React.FC = () => {
   return (
     <div>
       {LogInIsShown && (
-        <ModalLogIn
+        <ModalLogIn    
           onHideModal={hideModalHandler}
           onShowModal={showLogInHandler}
         />
