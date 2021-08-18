@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Modal from "./Modal";
 import useInput from "../hooks/use-input";
 
@@ -67,8 +67,6 @@ const ModalLogIn: React.FC<{
     logInHandler(enteredPassword && enteredEmail);
     props.onHideModal();
   };
-
-  
 
   return (
     <Fragment>
