@@ -8,6 +8,16 @@
     background-color: rgba(0, 0, 0, 0.75);
   }
   
+  .registered {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .div_registered {
+    text-align: center;
+    padding-top: 1rem;
+    margin-bottom: -2rem;
+  }
+
   .modal_register {
     position: fixed;
     top: 20vh;
