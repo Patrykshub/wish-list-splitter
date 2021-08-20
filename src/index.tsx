@@ -1,10 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
 
-ReactDOM.render(
+import { Provider } from "react-redux";
+import store from "./store/store";
+import App from "./App";
 
-    <App />,
-  document.getElementById('root')
+import ReactDOM from "react-dom";
+import "./index.css";
+
+const AppWrapper = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
+
+ReactDOM.render(<AppWrapper />, document.getElementById("root"));

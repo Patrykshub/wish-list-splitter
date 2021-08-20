@@ -73,11 +73,11 @@ const ModalLogIn: React.FC<{
           } else {
             res.json().then((data) => {
               let errorMessage = "Authentication failed!";
-               if (data && data.error && data.error.message) {
+              if (data && data.error && data.error.message) {
                 errorMessage = data.error.message;
-               // throw new Error(errorMessage);
-               alert(errorMessage);
-               }
+                // throw new Error(errorMessage);
+                alert(errorMessage);
+              }
             });
           }
         })
@@ -89,7 +89,7 @@ const ModalLogIn: React.FC<{
         });
     };
 
-    console.log(enteredPassword, enteredEmail + ' You are logged in!');
+    console.log(enteredPassword, enteredEmail + " You are logged in!");
     lastNameReset();
     emailReset();
     logInHandler(enteredPassword && enteredEmail);
@@ -100,6 +100,9 @@ const ModalLogIn: React.FC<{
     <Fragment>
       {<Backdrop onHideModal={props.onHideModal} />}
       <Modal onShowModal={props.onShowModal}>
+        <div className={classes.login_div}>
+          <p>Login</p>
+        </div>
         <form className={classes.form_control} onSubmit={formSubmissionHandler}>
           <div>
             <label htmlFor="email">E-Mail</label>
