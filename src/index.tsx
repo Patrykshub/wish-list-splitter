@@ -1,16 +1,14 @@
 import React from "react";
 
-import { Provider } from "react-redux";
-import store from "./store/store";
 import App from "./App";
 
 import ReactDOM from "react-dom";
 import "./index.css";
+import { AuthContextProvider } from "./store/store";
 
-const AppWrapper = () => (
-  <Provider store={store}>
+ReactDOM.render(
+  <AuthContextProvider>
     <App />
-  </Provider>
+  </AuthContextProvider>,
+  document.getElementById("root")
 );
-
-ReactDOM.render(<AppWrapper />, document.getElementById("root"));

@@ -1,13 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Modal from "./Modal";
 import useInput from "../hooks/use-input";
 
 import classes from "./Modal.module.css";
+import AuthContext from "../../store/store";
 
 const ModalLogIn: React.FC<{
   onHideModal: () => void;
   onShowModal: () => void;
 }> = (props) => {
+  const authCtx = useContext(AuthContext);
+
   const Backdrop: React.FC<{ onHideModal: () => void }> = (props) => {
     return (
       <div className={classes.backdrop_login} onClick={props.onHideModal} />
@@ -42,6 +45,46 @@ const ModalLogIn: React.FC<{
     console.log(formIsValid);
   }
 
+  const logInHandler = () => {
+    console.log('================================');
+
+    fetch(
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVPHKxp6tMP6Dtvd-l9KciCQaa9-FsXA",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email: enteredEmail,
+          password: enteredPassword,
+          returnSecureToken: true,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          res.json().then((data) => {
+            let errorMessage = "Authentication failed!";
+            if (data && data.error && data.error.message) {
+              errorMessage = data.error.message;
+              // throw new Error(errorMessage);
+              alert(errorMessage);
+            }
+          });
+        }
+      //   .then((data) => {
+      //     console.log('================================');
+      //       console.log(data)});
+      // })
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
   const formSubmissionHandler = (FormEvent: any) => {
     FormEvent.preventDefault();
 
@@ -52,47 +95,10 @@ const ModalLogIn: React.FC<{
       return;
     }
 
-    const logInHandler = (userData: string | number) => {
-      fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVPHKxp6tMP6Dtvd-l9KciCQaa9-FsXA",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            res.json().then((data) => {
-              let errorMessage = "Authentication failed!";
-              if (data && data.error && data.error.message) {
-                errorMessage = data.error.message;
-                // throw new Error(errorMessage);
-                alert(errorMessage);
-              }
-            });
-          }
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    };
-
-    console.log(enteredPassword, enteredEmail + " You are logged in!");
+    logInHandler();
+    console.log(enteredEmail, enteredPassword + " You are logged in!");
     lastNameReset();
     emailReset();
-    logInHandler(enteredPassword && enteredEmail);
     props.onHideModal();
   };
 
