@@ -1,11 +1,12 @@
 import { useContext } from "react";
 
-import LoginButton from "./LoginButton";
+import LoginButton from "../Buttons/LoginButton";
 import classes from "./HomePage.module.css";
-import RegisterButton from "./RegisterButton";
-import ProfileButton from "./ProfileButton";
+import RegisterButton from "../Buttons/RegisterButton";
+import ProfileButton from "../Buttons/ProfileButton";
 import AuthContext from "../../store/store";
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "../Buttons/LogoutButton";
+import Profile from "../Profile/Profile";
 
 const HomePage: React.FC<{
   onShowHandler: () => void;
@@ -28,7 +29,9 @@ const HomePage: React.FC<{
         {!isLoggedIn && <RegisterButton onShowRegister={props.onShowRegister} /> }
       </div>
     </header>
-    <body></body>
+    <body>
+      <Profile />
+    </body>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import classes from './HeaderButton.module.css';
+import classes from "./HeaderButton.module.css";
 
 const RegisterButton: React.FC <{onShowRegister: () => void}> = (props) => {
     return (
