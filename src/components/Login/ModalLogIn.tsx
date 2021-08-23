@@ -75,11 +75,14 @@ const ModalLogIn: React.FC<{
             }
           });
         }
-      //   .then((data) => {
-      //     console.log('================================');
-      //       console.log(data)});
-      // })
+        // try catch await
+      
       })
+      .then((data) => {
+        console.log('================================');
+          console.log(data)
+          authCtx.login(data.idToken); 
+        })
       .catch((err) => {
         alert(err.message);
       });
@@ -96,7 +99,7 @@ const ModalLogIn: React.FC<{
     }
 
     logInHandler();
-    console.log(enteredEmail, enteredPassword + " You are logged in!");
+    // console.log(enteredEmail, enteredPassword + " You are logged in!");
     lastNameReset();
     emailReset();
     props.onHideModal();

@@ -1,8 +1,8 @@
 import classes from "./HeaderButton.module.css";
 
-const LogoutButton: React.FC = (props) => {
+const LogoutButton: React.FC<{ onLogoutHandler: () => void }> = (props) => {
   return (
-    <button className={classes.button}>
+    <button className={classes.button} onClick={props.onLogoutHandler}>
       <span>Logout</span>
     </button>
   );
