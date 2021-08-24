@@ -1,0 +1,39 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 45%;
+  background-color: #ccc;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  padding-bottom: 1rem;
+}
+.profile input {
+  margin-left: 1rem;
+  width: 45%;
+}
+.profile p {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.profile_user {
+  margin-left: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.profile button {
+  cursor: pointer;
+  border: none;
+  background-color: #01064d;
+  color: white;
+  padding: 0.25rem 0.7rem;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #000a8f;
+}
