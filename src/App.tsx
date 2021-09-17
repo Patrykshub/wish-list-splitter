@@ -3,6 +3,7 @@ import { useContext } from "react";
 
 import HomePage from "./components/Layout/HomePage";
 import ModalLogIn from "./components/Login/ModalLogIn";
+import SignUp from "./components/Login/SignUp";
 import ModalRegister from "./components/Register/ModalRegister";
 import AuthContext from "./store/store";
 
@@ -50,6 +51,7 @@ const App: React.FC = () => {
         onShowHandler={showLogInHandler}
         onShowRegister={showRegisterHandler}
       />
+      <SignUp />
     </div>
   );
 };
